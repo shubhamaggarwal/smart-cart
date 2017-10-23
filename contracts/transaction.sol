@@ -20,7 +20,7 @@ contract transaction {
 	event receiveConfirmed();
 	event refundConfirmed();
 
-	function purchase () public
+	function transaction () public
 	    payable
 	{
 		seller = msg.sender;
