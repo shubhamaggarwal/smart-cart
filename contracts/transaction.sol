@@ -59,7 +59,7 @@ contract transaction {
 
 	function killContract() public
 		onlySeller(msg.sender)
-		inState(State.created)
+		inState(State.Created)
 	{
 		selfdestruct(seller);
 	}
