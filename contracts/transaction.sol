@@ -57,4 +57,11 @@ contract transaction {
 		refundConfirmed();
 	}
 
+	function killContract() public
+		onlySeller(msg.sender)
+		inState(State.created)
+	{
+		selfdestruct(seller);
+	}
+
 }
