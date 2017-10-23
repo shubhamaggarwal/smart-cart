@@ -64,7 +64,7 @@ contract transaction {
 		inState(State.Created)
 	{
 		selfdestruct(seller);
-
+		state = State.Disabled;
 	}
 
 
@@ -74,6 +74,7 @@ contract transaction {
 	{
 		buyer.transfer(value*2);
 		selfdestruct(seller);
+		state = State.Disabled;
 	}
 
 }
