@@ -6,7 +6,7 @@ contract transaction {
 	address buyer;
 	uint value;
 
-	enum State {Created, Confirmed, Disabled}
+	enum State {Created, Confirmed, Disabled} //default state is the first one.
 	State state;
 
 	
@@ -19,6 +19,7 @@ contract transaction {
 	event purchaseConfirmed();
 	event receiveConfirmed();
 	event refundConfirmed();
+	event itemShipped();
 
 	function transaction () public
 	    payable
@@ -35,6 +36,7 @@ contract transaction {
 		buyer = msg.sender;
 		state = State.Confirmed;
 		purchaseConfirmed();
+		itemShipped();
 	}
 
 	function confirmReceived() public
@@ -61,6 +63,16 @@ contract transaction {
 		onlySeller(msg.sender)
 		inState(State.Created)
 	{
+		selfdestruct(seller);
+
+	}
+
+
+	function deliveryUnsuccesful() public
+		onlySeller(msg.sender)
+		inState(State.Confirmed)
+	{
+		buyer.transfer(value*2);
 		selfdestruct(seller);
 	}
 
