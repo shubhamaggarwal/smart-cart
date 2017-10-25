@@ -25,7 +25,7 @@ contract Transaction {
 	    payable
 	{
 		seller = msg.sender;
-		value = (msg.value*1)/2;
+		value = msg.value;
 	}	
 
 	function confirmPurchase() public
@@ -43,10 +43,10 @@ contract Transaction {
 		inState(State.Confirmed)
 		onlyBuyer(msg.sender)
 	{
+		receiveConfirmed();	
 		buyer.transfer(value);
 		seller.transfer(this.balance);
 		state = State.Disabled;
-		receiveConfirmed();
 	}
 
 	function refundBuyer() public
@@ -63,16 +63,6 @@ contract Transaction {
 		onlySeller(msg.sender)
 		inState(State.Created)
 	{
-		selfdestruct(seller);
-		state = State.Disabled;
-	}
-
-
-	function deliveryUnsuccesful() public
-		onlySeller(msg.sender)
-		inState(State.Confirmed)
-	{
-		buyer.transfer(value*2);
 		selfdestruct(seller);
 		state = State.Disabled;
 	}
