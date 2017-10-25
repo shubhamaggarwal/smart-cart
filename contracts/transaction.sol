@@ -1,6 +1,6 @@
 pragma solidity ^0.4.11;
 
-contract transaction {
+contract Transaction {
 
 	address seller;
 	address buyer;
@@ -21,7 +21,7 @@ contract transaction {
 	event refundConfirmed();
 	event itemShipped();
 
-	function transaction () public
+	function Transaction () public
 	    payable
 	{
 		seller = msg.sender;
