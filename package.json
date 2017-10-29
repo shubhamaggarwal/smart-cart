@@ -1,8 +1,8 @@
 {
-  "name": "webpack",
+  "name": "SmartKart",
   "version": "3.8.1",
-  "author": "Tobias Koppers @sokra",
-  "description": "Packs CommonJs/AMD modules for the browser. Allows to split your codebase into multiple bundles, which can be loaded on demand. Support loaders to preprocess files, i.e. json, jsx, es7, css, less, ... and your custom stuff.",
+  "author": "@smartkart",
+  "description": "SmartKart is a P2P marketplace with no trusted 3rd parties involved in between the transaction. With the help of the Ethereum blockchain, a smart contract between the buyer and seller is signed by both the parties to establish a two party trustless escrow.",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.22.2",
