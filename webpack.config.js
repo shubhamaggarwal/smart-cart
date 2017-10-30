@@ -16,6 +16,9 @@ module.exports = {
 			name: "commons"
 		})
 	],
+  node: {
+   fs: "empty"
+  },
 	module: {
     rules: [
       {
